@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// -------- website Route -----------
 Route::get('home', [WebsiteController::class,'home']);
 Route::get('about', [WebsiteController::class,'about']);
 Route::get('contact', [WebsiteController::class,'contact']);
 Route::get('services', [WebsiteController::class,'services']);
+
+// -------- admin Route -----------
+Route::get('deshboard', [AdminController::class,'deshboard']);

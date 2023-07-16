@@ -28,3 +28,6 @@ Route::get('services', [WebsiteController::class,'services']);
 
 // -------- admin Route -----------
 Route::get('deshboard', [AdminController::class,'deshboard']);
+Route::get('table', [AdminController::class,'table']);
+Route::get('login', [AdminController::class,'login']);
+Route::get('register', [AdminController::class,'register']);

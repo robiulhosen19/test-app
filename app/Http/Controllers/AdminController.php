@@ -11,4 +11,18 @@ class AdminController extends Controller
         return view('admin.pages.deshboard');
         
     }
+    public function table()  {
+
+        return view('admin.pages.table');
+        
+    }
+    public function login()  {
+
+        return view('admin.pages.login');
+        
+    }
+
+    public function register() {
+        return view('admin.pages.register');
+    }
 }

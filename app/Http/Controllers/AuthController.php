@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -16,37 +15,31 @@ class AuthController extends Controller
         
     }
 
-    
-public function userLogin(Request $request)
-{
-    $email = $request->email;
-    $password = $request->password;
+    public function userLogin(Request $request) {
+       
+        $email = $request->email;
+        $password = md5($request->password);
+       $user =  User::where('email', '=', $email)
+             ->where('password', '=', $password)
+             -> first();
+             if($user){
+                //check if user is approved(check value of status column is 1)
+                if($user->status==1){
+                    // Session user info in the session
+                    Session()->put('user_fname',$user->first_name);
+                    Session()->put('user_lname',$user->last_name);
+                    Session()->put('user_email',$user->email);
+                    Session()->put('user_role',$user->role);
+                    return redirect('dashboard');
 
-    // Use the email to fetch the user from the database
-    $user = User::where('email', $email)->first();
-
-    if ($user) {
-        // Verify the password using Laravel's built-in authentication
-        if (Hash::check($password, $user->password)) {
-            // Check if the user is approved (status column is 1)
-            if ($user->status == 1) {
-                // Store user info in the session
-                session([
-                    'user_fname' => $user->first_name,
-                    'user_lname' => $user->last_name,
-                    'user_email' => $user->email,
-                    'user_role' => $user->role,
-                ]);
-
-                return redirect('admin/dashboard');
-            } else {
-                return redirect()->back()->with('error', 'User Not Approved Yet');
-            }
-        }
+                }else{
+                    return redirect()->back()->with('error','User Not Approved Yet');
+                }
+             }else{
+                return redirect()->back()->with('error','User Not Found with these credentials'); 
+             }
+                
     }
-
-    return redirect()->back()->with('error', 'User Not Found with these credentials');
-}
 
 
     // --------- Teacher Register ---------
@@ -102,6 +95,11 @@ public function userLogin(Request $request)
             return redirect()->back()->with('error','Password Mismatch');
         }
 
+    }
+    public function logout(Request $request) {
+        $request ->session()->forget(['user_fname','user_lname','user_email','user_role']);
+               
+        return redirect('login');
     }
 }
 

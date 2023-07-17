@@ -5,6 +5,7 @@ use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('contact', [WebsiteController::class,'contact']);
 Route::get('services', [WebsiteController::class,'services']);
 
 // -------- admin Route -----------
-Route::get('deshboard', [AdminController::class,'deshboard']);
+Route::get('dashboard', [AdminController::class,'dashboard']);
 Route::get('table', [AdminController::class,'table']);
 
 
@@ -42,3 +43,14 @@ Route::post('admin/teacher-registration', [AuthController::class,'registrationTe
 
 Route::get('student-register', [AuthController::class,'studentRegister']);
 Route::post('admin/student-registration', [AuthController::class,'registrationStudent']);
+
+// ----------Log Out Session-----------
+Route::get('admin/logout', [AuthController::class,'logout']);
+
+// ----------Users Routes-----------
+Route::get('admin/pending-users', [UserController::class,'pendingUsers']);
+Route::get('admin/approve-user/{userid}', [UserController::class,'approveUser']);
+
+
+
+

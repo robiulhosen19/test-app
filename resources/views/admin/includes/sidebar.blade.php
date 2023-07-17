@@ -17,6 +17,12 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+ <!-- pending user -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('admin/pending-users')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Pending Users</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

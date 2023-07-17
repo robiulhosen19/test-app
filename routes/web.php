@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WebsiteController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +31,9 @@ Route::get('services', [WebsiteController::class,'services']);
 // -------- admin Route -----------
 Route::get('deshboard', [AdminController::class,'deshboard']);
 Route::get('table', [AdminController::class,'table']);
-Route::get('login', [AdminController::class,'login']);
-Route::get('register', [AdminController::class,'register']);
+
+
+// -------- Auth Route -----------
+Route::get('login', [AuthController::class,'login']);
+Route::get('teacher-register', [AuthController::class,'teacherRegister']);
+Route::post('admin/teacher-registration', [AuthController::class,'registrationTeacher']);

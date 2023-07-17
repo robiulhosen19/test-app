@@ -35,5 +35,10 @@ Route::get('table', [AdminController::class,'table']);
 
 // -------- Auth Route -----------
 Route::get('login', [AuthController::class,'login']);
+Route::post('admin/user-login', [AuthController::class,'userLogin']);
+
 Route::get('teacher-register', [AuthController::class,'teacherRegister']);
 Route::post('admin/teacher-registration', [AuthController::class,'registrationTeacher']);
+
+Route::get('student-register', [AuthController::class,'studentRegister']);
+Route::post('admin/student-registration', [AuthController::class,'registrationStudent']);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('first_name',50);
             $table->string('last_name',50);
             $table->string('email',50);
+            $table->string('student_id',30)->nullable();
             $table->string('password',50);
             $table->string('role',30);
             $table->boolean('status')->default(false);

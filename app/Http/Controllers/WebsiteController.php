@@ -26,4 +26,9 @@ class WebsiteController extends Controller
     return view('website.pages.services');
     
    }
+
+   public function profile()  {
+      return view('website.pages.profile');
+      
+   }
 }

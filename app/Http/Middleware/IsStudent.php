@@ -15,6 +15,9 @@ class IsStudent
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (Session()->has('user_role') && Session()->get('user_role') != 'Student') {
+            return redirect('dashboad');
+        }
         return $next($request);
     }
 }

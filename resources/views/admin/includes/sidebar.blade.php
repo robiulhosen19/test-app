@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('deshboard')}}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('dashboard')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">University</div>
             </a>
 
             <!-- Divider -->
@@ -13,7 +13,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{url('deshboard')}}">
+                <a class="nav-link" href="{{url('dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -23,6 +23,14 @@
                 <a class="nav-link" href="{{url('admin/pending-users')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pending Users</span></a>
+            </li>
+            @endif
+            @if(Session()->has('user_role') && Session()->get('user_role') == 'Student')
+            <!-- Home user -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('home')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Home</span></a>
             </li>
             @endif
             <!-- Divider -->

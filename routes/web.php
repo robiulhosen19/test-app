@@ -24,10 +24,11 @@ Route::get('/', function () {
 
 
 // -------- website Route -----------
-Route::get('home', [WebsiteController::class, 'home']);
+// Route::get('home', [WebsiteController::class, 'home']);
 Route::get('about', [WebsiteController::class, 'about']);
 Route::get('contact', [WebsiteController::class, 'contact']);
 Route::get('services', [WebsiteController::class, 'services']);
+Route::get('profile', [WebsiteController::class, 'profile']);
 
 
 
@@ -45,11 +46,14 @@ Route::post('admin/student-registration', [AuthController::class, 'registrationS
 
 
 
+
+
 Route::middleware(['checkLogin'])->group(function () {
     // -------- admin Route -----------
     Route::get('dashboard', [AdminController::class, 'dashboard']);
     Route::get('table', [AdminController::class, 'table']);
-
+// -------- website Route -----------
+Route::get('home', [WebsiteController::class, 'home']);
 
     // ----------Log Out Session-----------
     Route::get('admin/logout', [AuthController::class, 'logout']);

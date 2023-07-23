@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +67,9 @@ Route::get('home', [WebsiteController::class, 'home']);
     });
     
 });
+
+Route::get('auth/google', [GoogleController::class, 'googlepage']);
+Route::get('puc', [GoogleController::class, 'googlecallback']);
+
+// ------------Employee Route --------
+Route::get ('website/employee',[EmployeeController::class, 'create']);
